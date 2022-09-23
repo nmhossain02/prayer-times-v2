@@ -1,0 +1,26 @@
+@import "../vars.css";
+
+.Clock {
+    display: flex;
+    flex-flow: row nowrap;
+    font-family: monospace;
+    font-size: var(--clock-height);
+    height: var(--clock-height);
+    overflow: hidden;
+}
+
+.Digit {
+    transition: 750ms all ease;
+    /* border: solid 1px red;
+    margin: -1px; */
+    margin: 0;
+    height: calc(var(--clock-height) * 9);
+    padding: 0;
+}
+.Digit > div {
+    height: var(--clock-height);
+}
+
+.highlight {
+    font-weight: bold;
+}
