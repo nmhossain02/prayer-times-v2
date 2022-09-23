@@ -9,7 +9,7 @@ function App() {
   useEffect(() => {
     setInterval(() => {
       setCurrentTime(new Date())
-    }, 1000)
+    }, 500)
   }, [])
 
   return (

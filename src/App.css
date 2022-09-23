@@ -4,5 +4,19 @@
 }
 
 .App {
-  width: 100%;
+  min-width: 80vw;
+  min-height: 80vh;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 2fr 1fr;
+  grid-template-areas:
+    "big-clock big-clock side-bar"
+    "date message side-bar";
+}
+
+.Clock {
+  grid-area: big-clock;
+  border: solid 1px red;
+  margin: -1px;
 }
