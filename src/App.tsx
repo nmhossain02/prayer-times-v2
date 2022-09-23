@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className="App">
-      <Clock date={currentTime} />
+      <Clock noSeconds={false} date={currentTime} />
     </div>
   )
 }
