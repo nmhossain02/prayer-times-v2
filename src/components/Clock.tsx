@@ -12,15 +12,13 @@ const isClockProps = (x: any) : x is clockProps => {
 }
 
 const Digit = ({val} : {val: number}) => {
-    const clockHeight = getComputedStyle(document.body).getPropertyValue("--clock-height")
+    // const clockHeight = getComputedStyle(document.body).getPropertyValue("--clock-height")
     const style = {
-        marginTop: `calc(${clockHeight} * ${-val})`
+        translate: `0 calc(var(--clock-height) * ${-val})`
     }
     return <div style={style} className="Digit">
         {[...Array(10).keys()].map(n => <div key={n} className="digit-pane">
-            {n === val ?
-                <div className="highlight">{n}</div>
-                : n}
+            <div className={n === val ? "highlight" : "lowlight"}>{n}</div>
         </div>)}
     </div>
 } 

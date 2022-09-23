@@ -6,13 +6,16 @@
     font-family: monospace;
     font-size: var(--clock-height);
     height: var(--clock-height);
-    overflow: hidden;
+    /* overflow: hidden; */
+    border: solid 1px red;
+    margin: -1px;
+    padding-top: 0.2em;
+    align-items: baseline;
+    height: calc(var(--clock-height) - 0.2em);
 }
 
 .Digit {
     transition: 750ms all ease;
-    /* border: solid 1px red;
-    margin: -1px; */
     margin: 0;
     height: calc(var(--clock-height) * 9);
     padding: 0;
@@ -21,6 +24,20 @@
     height: var(--clock-height);
 }
 
+.digit-pane > div {
+    transition: 500ms all ease;
+}
+
+.lowlight {
+    opacity: 0.5;
+}
+
 .highlight {
-    font-weight: bold;
+    /* font-weight: bold; */
+    opacity: 1;
+}
+
+.ampm {
+    font-size: 0.6em;
+    height: var(--clock-height);
 }
