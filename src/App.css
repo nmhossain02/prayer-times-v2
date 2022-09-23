@@ -15,8 +15,12 @@
     "date message side-bar";
 }
 
-.Clock {
+.big-clock-wrap {
   grid-area: big-clock;
   border: solid 1px red;
   margin: -1px;
+}
+
+.big-clock-wrap > .Clock {
+  font-size: 170px
 }

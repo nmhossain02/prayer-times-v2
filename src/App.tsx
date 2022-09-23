@@ -14,7 +14,9 @@ function App() {
 
   return (
     <div className="App">
-      <Clock noSeconds={false} date={currentTime} />
+      <div className="big-clock-wrap">
+        <Clock noSeconds={false} date={currentTime} />
+      </div>
     </div>
   )
 }
