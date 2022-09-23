@@ -4,24 +4,17 @@
     display: flex;
     flex-flow: row nowrap;
     font-family: monospace;
-    font-size: var(--clock-height);
-    height: var(--clock-height);
+    font-size: 50px;
     /* overflow: hidden; */
-    border: solid 1px red;
     margin: -1px;
-    padding-top: 0.2em;
+    padding-top: 0.3em;
     align-items: baseline;
-    height: calc(var(--clock-height) - 0.2em);
 }
 
 .Digit {
     transition: 750ms all ease;
     margin: 0;
-    height: calc(var(--clock-height) * 9);
     padding: 0;
-}
-.Digit > div {
-    height: var(--clock-height);
 }
 
 .digit-pane > div {
@@ -29,7 +22,7 @@
 }
 
 .lowlight {
-    opacity: 0.5;
+    opacity: 0;
 }
 
 .highlight {
@@ -39,5 +32,4 @@
 
 .ampm {
     font-size: 0.6em;
-    height: var(--clock-height);
 }
