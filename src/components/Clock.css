@@ -7,7 +7,6 @@
     font-size: var(--clock-height);
     height: var(--clock-height);
     overflow: hidden;
-    align-items: baseline;
 }
 
 .Digit {

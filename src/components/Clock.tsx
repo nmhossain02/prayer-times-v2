@@ -3,7 +3,7 @@ import "./Clock.css"
 type clockProps = {
     hours: number,
     minutes: number,
-    seconds?: number,
+    seconds: number,
     ampm: "am" | "pm"
 }
 
@@ -25,7 +25,7 @@ const Digit = ({val} : {val: number}) => {
     </div>
 } 
 
-const Clock = (props : clockProps | {date: Date, noSeconds?: boolean}) => {
+const Clock = (props : clockProps | {date: Date}) => {
     const {hours, minutes, seconds, ampm} = 
         isClockProps(props) ? props
         : {
@@ -36,25 +36,12 @@ const Clock = (props : clockProps | {date: Date, noSeconds?: boolean}) => {
         }
     const hoursArr = [Math.floor(hours / 10), hours % 10]
     const minutesArr = [Math.floor(minutes / 10), minutes % 10]
-    const noSeconds = function() {
-        if (isClockProps(props))
-            return props.seconds === undefined
-        else {
-            if (props.noSeconds !== undefined) {
-                return props.noSeconds
-            } else {
-                return false
-            }
-        }
-    }()
-    const secondsArr = noSeconds ? null : [Math.floor(seconds / 10), seconds % 10]
+    const secondsArr = [Math.floor(seconds / 10), seconds % 10]
     return <div className="Clock">
         <Digit val={hoursArr[0]} /><Digit val={hoursArr[1]} />
         :<Digit val={minutesArr[0]} /><Digit val={minutesArr[1]} />
-        {!noSeconds && <>
-            :<Digit val={secondsArr[0]} /><Digit val={secondsArr[1]} />
-        </>}
-        <div className="ampm">{ampm}</div>
+        :<Digit val={secondsArr[0]} /><Digit val={secondsArr[1]} />
+        {ampm}
     </div>
 }
 
