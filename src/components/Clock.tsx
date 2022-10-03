@@ -57,11 +57,11 @@ const Clock = (props : clockProps | {date: Date, noSeconds?: boolean}) => {
     }
     return <div ref={ref} style={style} className="Clock">
         <Digit clockHeight={clockHeight.current} val={hoursArr[0]} /><Digit clockHeight={clockHeight.current} val={hoursArr[1]} />
-        :<Digit clockHeight={clockHeight.current} val={minutesArr[0]} /><Digit clockHeight={clockHeight.current} val={minutesArr[1]} />
+        <span className="small-font">:</span><Digit clockHeight={clockHeight.current} val={minutesArr[0]} /><Digit clockHeight={clockHeight.current} val={minutesArr[1]} />
         {!noSeconds && <>
-            :<Digit clockHeight={clockHeight.current} val={secondsArr[0]} /><Digit clockHeight={clockHeight.current} val={secondsArr[1]} />
+            <span className="small-font">:</span><Digit clockHeight={clockHeight.current} val={secondsArr[0]} /><Digit clockHeight={clockHeight.current} val={secondsArr[1]} />
         </>}
-        <div className="ampm">{ampm}</div>
+        <div className="small-font ampm">{ampm}</div>
     </div>
 }
 

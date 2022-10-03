@@ -4,23 +4,93 @@
 }
 
 .App {
-  min-width: 80vw;
-  min-height: 80vh;
-  margin: auto;
+  /* Dimensions */
+  min-width: 90vw;
+  min-height: 90vh;
+  padding: 0 10px;
+  /* Layout */
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  grid-template-rows: 2fr 1fr;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 3fr 1fr;
   grid-template-areas:
-    "big-clock big-clock side-bar"
-    "date message side-bar";
+    "big-clock side-bar"
+    "message side-bar";
+  /* Font */
+  font-size: 25px;
+  vertical-align: top; 
+  /* from https://stackoverflow.com/questions/51112272/why-html-element-gets-misaligned-when-adding-overflowhidden-to-one-of-the-sibli */
 }
 
 .big-clock-wrap {
   grid-area: big-clock;
-  border: solid 1px red;
-  margin: -1px;
+  /* overflow: hidden; */
+  padding-top: 150px;
 }
 
 .big-clock-wrap > .Clock {
-  font-size: 170px
+  font-size: 225px;
+}
+
+.big-clock-wrap .lowlight {
+  opacity: 0.2;
+}
+
+.message {
+  grid-area: message;
+  background-color: white;
+  color: black;
+  margin: 0px 30px 90px 30px;
+  padding: 0 50px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 30px;
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.date {
+  border-right: solid 3.5px black;
+  padding-right: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  align-self: stretch;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.side-bar {
+  grid-area: side-bar;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-end;
+  justify-content: space-evenly;
+}
+
+.time-item {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  justify-content: space-around;
+  font-size: 20px;
+  margin: 7px 0;
+  padding: 10px 20px;
+}
+
+.time-item:nth-of-type(3) {
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+}
+
+.time-item > .Clock {
+  font-size: 75px;
+  margin-bottom: -30px;
+}
+
+.time-item > .time-label {
+  margin-bottom: -10px;
 }

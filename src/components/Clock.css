@@ -7,8 +7,8 @@
     font-size: 50px;
     /* overflow: hidden; */
     margin: -1px;
-    padding-top: 0.3em;
-    align-items: baseline;
+    padding-top: 0.4em;
+    align-items: flex-start;
 }
 
 .Digit {
@@ -26,10 +26,13 @@
 }
 
 .highlight {
-    /* font-weight: bold; */
     opacity: 1;
 }
 
-.ampm {
+.small-font {
     font-size: 0.6em;
+}
+
+.ampm {
+    align-self: baseline;
 }
