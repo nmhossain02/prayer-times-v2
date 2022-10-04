@@ -27,5 +27,12 @@ body {
   /* margin: 10px; */
   /* display: flex;
   place-items: center; */
-  overflow-y: hidden;
+  /* overflow-y: hidden;
+  overflow-x: visible; */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
