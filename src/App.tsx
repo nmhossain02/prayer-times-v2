@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 import Clock from './components/Clock'
@@ -25,15 +25,41 @@ const defaultTimes: timesType = {
 function App() {
   const [currentTime, setCurrentTime] = useState<Date>(new Date())
   const [times, setTimes] = useState<timesType>(defaultTimes)
+  const [now, setNow] = useState<string>("Isha")
+  const updateNow = () => {
+    type timeType = { label: string, minutes: number }
+    const labeledMinutes: timeType[] = Object.keys(times).map(time => {
+      const timeArr = times[time].split(/[: %]+/)
+      return {
+        label: time,
+        minutes: ( (timeArr[0] as number) % 12 + (timeArr[2] === 'pm' ? 12 : 0) ) * 60 + (+timeArr[1])
+      }
+    })
+    labeledMinutes.sort((a: timeType, b: timeType) => a.minutes - b.minutes)
+    const currentMinutes = currentTime.getMinutes() + currentTime.getHours() * 60
+    let currNow = "Isha"
+    labeledMinutes.every(minutes => {
+      if (minutes.minutes > currentMinutes) {
+        return false;
+      } else {
+        currNow = minutes.label
+        return true;
+      }
+    })
+    setNow(currNow)
+  }
 
   useEffect(() => {
     setInterval(() => {
       setCurrentTime(new Date())
     }, 500)
     const fetchTimes = () => {
-      fetch("http://www.islamicfinder.us/index.php/api/prayer_times?country=US&zipcode=30309&method=2")
+      fetch("https://www.islamicfinder.us/index.php/api/prayer_times?country=US&zipcode=30309&method=2")
         .then(res => res.json())
-        .then(res => setTimes(res.results))
+        .then(res => {
+          setTimes(res.results)
+          updateNow()
+        })
     }
     fetchTimes()
     setInterval(fetchTimes, 1000 * 30)
@@ -49,13 +75,13 @@ function App() {
           {(new Date()).toLocaleDateString()}
         </div>
         <div className="time-text">
-          Message
+          Created by Nabeel Hossain
         </div>
       </div>
       <div className="side-bar">
         {Object.keys(times).map(time => {
           const timeArr = times[time].split(/[: %]+/)
-          return <div className="time-item">
+          return <div key={time} className={`time-item${time === now ? " now" : ""}`}>
             <div className="time-label">
               {time}
             </div>
